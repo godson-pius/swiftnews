@@ -13,10 +13,15 @@ export class TopheadingComponent implements OnInit {
   //= Display data
   topHeadingDisplay:any = [];
 
+  //= Display error
+  ErrorDisplay:any;
+
   ngOnInit(): void {
     this._services.topHeading().subscribe((result) => {
       console.log(result)
       this.topHeadingDisplay = result.articles;
+    }, (err) => {
+      this.ErrorDisplay = "Could not process request!";
     })
   }
 

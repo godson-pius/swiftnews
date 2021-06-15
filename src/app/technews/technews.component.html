@@ -1,16 +1,25 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row mt-3">
-        <h3 class="bg-light p-2 rounded">Swift News | Technology</h3>
         <ngx-loading-bar [color]="'#000'" [includeSpinner]="false" [height]="'4px'" [fixed]="false"></ngx-loading-bar>
-        <div *ngFor="let data of techNewsDisplay" class="col-lg-3">
-            <div class="card">
-                <img class="card-img-top" src="{{ data.urlToImage }}" width="100%" alt="">
+        <h3 class="bg-light p-2 rounded">Swift News | Technology</h3>
+        <div *ngFor="let data of techNewsDisplay" class="col-lg-3 mb-3">
+            <div class="card shadow">
+                <div style="height: 250px; background-color: brown; background-image: url('{{ data.urlToImage }}'); background-size: cover; background-position: center;"></div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ data.title }}</h5>
+                    <h5 class="card-title">{{ data.title.substr(0, 50) }}...</h5>
                     <!-- <p class="card-text">Content</p> -->
-                    <a href="{{ data.url }}" class="btn btn-dark btn-sm">Read more</a>
+                    <a href="{{ data.url }}" target="_blank" class="btn btn-dark btn-sm">Read more</a>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div *ngIf="techErrorDisplay">
+        <div class="jumbotron">
+            <h1 class="display-4">Error</h1>
+            <p class="lead">{{ techErrorDisplay }}</p>
+            <hr class="my-4">
+            <p>Please check your connection</p>
         </div>
     </div>
 </div>
